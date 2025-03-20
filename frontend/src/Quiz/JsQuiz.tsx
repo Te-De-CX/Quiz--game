@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useSwipeable } from "react-swipeable";
-import { html } from "../libs/Questions"; // Replace with your questions data
+import { js } from "../libs/Questions"; // Replace with your questions data
 
-const HtmlQuiz: React.FC = () => {
+const JsQuiz: React.FC = () => {
   const [scores, setScores] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
@@ -17,7 +17,7 @@ const HtmlQuiz: React.FC = () => {
 
   const checkAnswer = () => {
     let score = 0;
-    html.forEach((quiz, index) => {
+    js.forEach((quiz, index) => {
       if (selectedOptions[index] === quiz.correct) {
         score++;
       }
@@ -26,7 +26,7 @@ const HtmlQuiz: React.FC = () => {
   };
 
   const handleSwipe = (direction: "left" | "right") => {
-    if (direction === "left" && currentQuestion < html.length - 1) {
+    if (direction === "left" && currentQuestion < js.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else if (direction === "right" && currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
@@ -50,8 +50,8 @@ const HtmlQuiz: React.FC = () => {
           className="quiz-card"
         >
           <div className="glass-background">
-            <h3>{html[currentQuestion].question}</h3>
-            {html[currentQuestion].options.map((option, i) => (
+            <h3>{js[currentQuestion].question}</h3>
+            {js[currentQuestion].options.map((option, i) => (
               <div
                 key={i}
                 className="option"
@@ -78,7 +78,7 @@ const HtmlQuiz: React.FC = () => {
         </button>
         <button
           onClick={() => handleSwipe("left")}
-          disabled={currentQuestion === html.length - 1}
+          disabled={currentQuestion === js.length - 1}
         >
           Next
         </button>
@@ -92,4 +92,4 @@ const HtmlQuiz: React.FC = () => {
   );
 };
 
-export default HtmlQuiz;
+export default JsQuiz;

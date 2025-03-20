@@ -1,68 +1,172 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+*{
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #1e293b; /* slate-800 */
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.quiz-card-container {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.quiz-card {
+  width: 100%;
+  min-height: 300px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s;
+}
+
+.glass-background {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s;
+}
+
+.option:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f9a11b; /* Accent color */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.checkbox-icon {
+  color: #f9a11b; /* Accent color */
+  font-size: 16px;
+}
+
+.navigation-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #f9a11b; /* Accent color */
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: background 0.3s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background: #e09117; /* Darker shade of accent color */
+}
+
+.submit-button {
+  margin-top: 20px;
+  background: #f9a11b; /* Accent color */
+}
+
+.submit-button:hover {
+  background: #e09117; /* Darker shade of accent color */
+}
+
+.score {
+  margin-top: 20px;
+  color: #f9a11b; /* Accent color */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .quiz-card {
+    min-height: 250px;
   }
-  a:hover {
-    color: #747bff;
+
+  .option {
+    padding: 8px;
   }
+
   button {
-    background-color: #f9f9f9;
+    padding: 8px 16px;
   }
+}
+
+.main-menu {
+  text-align: center;
+  height: 100vh;
+  background-color: #1e293b;
+  padding-top: 30px;
+}
+
+.main-menu h2 {
+  font-size: 2rem;
+  color: white; /* slate-800 */
+}
+
+.main-menu p {
+  font-size: 1.2rem;
+  color: #64748b; /* slate-500 */
+}
+
+.main-menu ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  list-style: none;
+  padding: 0;
+}
+
+.main-menu ul li {
+  margin: 10px 0;
+}
+
+.main-menu ul li a {
+  
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: #ffb546; /* accent color */
+  transition: color 0.3s;
+}
+
+.main-menu ul li a:hover {
+  color: #e09117; /* darker shade of accent color */
 }
